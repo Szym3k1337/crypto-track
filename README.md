@@ -1,16 +1,50 @@
-# React + Vite
+## Crypto track
+Crypto track is a modern web application that allows you to track actual crypto prices with such technologies and tools:\
+---
+## Technologies
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+* ** React ** - Js library to build  user interface
+* ** JavaScript ** - main language (would be Ts in the future)
+* ** Tailwindcss ** - CSS framework for styling application
+* ** Vite ** - a tool that allows you to create application
+* ** Git & GitHub ** - version control system
+* 
+---
 
-Currently, two official plugins are available:
+## Features
+ * Monitoring the most popular crypto prices
+ * Full responsive design
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+---
 
-## React Compiler
+## How to run this application
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+To run Crypto track on your PC do this steps :
 
-## Expanding the ESLint configuration
+### 1. Clone the repository
+```bash
+git clone [https://github.com/Szym3k1337/crypto-track.git](https://github.com/Szym3k1337/crypto-track.git)
+```
+### 2 Go to project folder
+```bash
+cd crypto-track
+```
+### 3 Install required dependencies
+```bash
+1 npm install
+2 npm install react-treeview react-router-dom
+3 For Tailwindcss :
+ * npm install tailwindcss @tailwindcss/vite
+ * Go to `vite.config.js`, import `tailwindcss`, and add it to the `plugins` array.
+ * Import `tailwindcss` at the very top of your `main.css` file.
+ ```
+### 4 run application
+```bash
+npm run dev
+```
+---
+## Roadmap
+* Charts in Charts.js to show price changes 24/7
+* Adding Typescript for more control
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+
