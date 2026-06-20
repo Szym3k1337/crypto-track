@@ -35,6 +35,7 @@ cd crypto-track
 ```bash
 1 npm install
 2 npm install react-treeview react-router-dom
+3 npm install recharts
 3 For Tailwindcss :
  * npm install tailwindcss @tailwindcss/vite
  * Go to `vite.config.js`, import `tailwindcss`, and add it to the `plugins` array.
