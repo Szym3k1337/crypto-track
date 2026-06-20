@@ -25,7 +25,7 @@ To run Crypto track on your PC do this steps :
 
 ### 1. Clone the repository
 ```bash
-git clone [https://github.com/Szym3k1337/crypto-track.git](https://github.com/Szym3k1337/crypto-track.git)
+git clone https://github.com/Szym3k1337/crypto-track.git
 ```
 ### 2 Go to project folder
 ```bash
