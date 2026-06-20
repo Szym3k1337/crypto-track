@@ -1,5 +1,5 @@
 ## Crypto track
-Crypto track is a modern web application that allows you to track actual crypto prices with such technologies and tools:\
+Crypto track is a modern web application that allows you to track actual crypto prices with such technologies and tools:
 ---
 ## Technologies
 
