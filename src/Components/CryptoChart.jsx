@@ -1,67 +1,57 @@
-import {Line} from 'react-chartjs-2';
-
-import {
-    Chart as ChartJS,
-    CategoryScale,
-    LinearScale,
-    PointElement,
-    LineElement,
-    Tooltip,
-    Filler
-} from 'chart.js';
-
-ChartJS.register(
-    CategoryScale,
-    LinearScale,
-    PointElement,
-    LineElement,
-    Tooltip,
-    Filler
-);
+import {ResponsiveContainer, LineChart, XAxis, YAxis, Line, Tooltip, Legend} from "recharts";
+import useFetch from "../customHooks/useFetch.js";
 
 
-function CryptoChart({ chartData }) {
-    const options = {
-        responsive: true,
-        maintainAspectRatio: false,
-        scales: {
-            x: {
-                grid: { display: false }, // Ukrywa pionowe linie siatki (odpowiednik tickLine={false})
-                border: { display: false },
-                ticks: { color: '#475569', font: { size: 11 } }, // Kolor czcionki dni tygodnia
-            },
-            y: {
-                display: false, // Ukrywa całą oś Y (identycznie jak hide={true} w Recharts)
-                grid: { display: false },
-            },
-        },
-    };
-
-    const data = {
-        labels: chartData.day, // Oś X (dni)
-        datasets: [     // <-- SPRAWDŹ CZY TU JEST "datasets" Z LITERĄ "s" NA KOŃCU!
-            {
-                data: chartData.price, // Oś Y (ceny)
-                borderColor: '#34d399',
-                borderWidth: 2.5,
-                tension: 0.3,
-                pointRadius: 0,
-                pointHoverRadius: 6,
-                pointHoverBackgroundColor: '#10b981',
-                fill: false,
-            },
-        ],
-    };
-    // Zabezpieczenie na wypadek, gdyby jakaś waluta nie miała jeszcze historii danych
-    if (!chartData || chartData.length === 0) {
-        return <p className="text-slate-500 text-sm">Brak danych historycznych dla tego aktywa.</p>;
+export default function CryptoChart({crypto, url}) {
+    const {data, loading, error} = useFetch(url);
+    if (loading) {
+        return <div className="p-4 bg-slate-900 text-green-400 rounded-lg font-bold">Loading  data ...</div>;
     }
-    console.log("Dane, które dostał wykres:", chartData);
+    if (error) {
+        return <div className="p-4 bg-slate-900 text-green-400 rounded-lg font-bold">Error: {error}</div>;
+    }
+
+
+    const formattedData = data?.prices?.map(([timestamp, price]) => {
+
+        const dateObject = new Date(timestamp);
+
+        const formattedDate = dateObject.toLocaleDateString('en-US', {
+            day: 'numeric',
+            month: 'short',
+            year: 'numeric',
+        });
+        return {
+            date: formattedDate,
+            price: parseFloat(price.toFixed(2))
+        };
+    }) || [];
+
+    console.log("Przetransformowane dane dla Recharts:", formattedData);
     return (
-        <div className="w-full h-52 bg-slate-950/50 border border-slate-800/60 rounded-2xl p-4 mt-6">
-            <Line data={data} options={options} />
+        <div className="p-4 bg-slate-900 text-green-400 rounded-lg w-full max-w-3xl">
+            <h3 className="font-bold mb-2">{`Wykres cen ${crypto}`}</h3>
+            <div className="w-full h-80">
+                <ResponsiveContainer width="100%" height="100%">
+                    <LineChart data={formattedData} margin={{ top: 10, right: 10, left: -10, bottom: 0 }}>
+                        <XAxis dataKey="date" stroke="#94A3B8" fontSize={9} axisLine={false} tickLine={false}/>
+
+                        <YAxis dataKey="price" stroke="#94A3B8" fontSize={12} tickFormatter={(value) => `$${Math.round(value)}`} axisLine={false} tickLine={false}
+                               domain={[
+                                   (dataMin) => Math.floor(dataMin * .98),
+                                   (dataMax) => Math.ceil(dataMax * 1.02)
+                                   ]} />
+
+                        <Tooltip contentStyle={{ backgroundColor: '#1E293B', border: 'none', borderRadius: '8px' }} itemStyle={{ color: '#10B981' }}/>
+
+                        <Legend />
+
+                        <Line name="Cena : USD" type="monotone" dataKey="price" stroke="#10B981" strokeWidth={3} dot={false}/>
+
+
+                    </LineChart>
+                </ResponsiveContainer>
+            </div>
         </div>
     );
 }
-
-export default CryptoChart;
