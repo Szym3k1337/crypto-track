@@ -4,6 +4,7 @@ Crypto track is a modern web application that allows you to track actual crypto 
 ## Technologies
 
 * ** React ** - Js library to build  user interface
+* ** Recharts ** - React library for building charts
 * ** JavaScript ** - main language (would be Ts in the future)
 * ** Tailwindcss ** - CSS framework for styling application
 * ** Vite ** - a tool that allows you to create application
@@ -45,7 +46,10 @@ npm run dev
 ```
 ---
 ## Roadmap
-* Charts in Charts.js to show price changes 24/7
-* Adding Typescript for more control
+* Adding TypeScript for more control
+* Adding a search option
 
+## The free API's problem
+Since my app uses a free API, refreshing the app too often will result in a 429 data retrieval error.
+This means there is no problem with either the app or your internet connection, but these types of services generate an error if data is retrieved from them too frequently.
 

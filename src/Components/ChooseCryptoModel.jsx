@@ -31,8 +31,8 @@ function ChooseCryptoModel() {
         <div className="w-full max-w-5xl h-80 bg-slate-900 border border-slate-800 rounded-2xl overflow-hidden mb-8">
         <Canvas camera={{position : [0,0,5], fov : 45}}>
             <ambientLight intensity={1.5} />
-            <directionalLight position={[5, 5, 5]} intensity={2} />
-            <directionalLight position={[-5, -5, -5]} intensity={0.5} />
+            <directionalLight position={[5, 5, 5]} intensity={5} />
+            <directionalLight position={[-5, -5, -5]} intensity={3} />
             <Float rotationIntensity={1} floatIntensity={1} speed={1.5}>
                 {randomModel.type === 'model' ? (
                     <CryptoModel3D modelPath={randomModel.path} scale={randomModel.scale} />
