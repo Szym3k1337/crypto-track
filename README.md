@@ -14,6 +14,7 @@ Crypto track is a modern web application that allows you to track actual crypto 
 ## Features
  * Monitoring the most popular crypto prices
  * Full responsive design
+ * Tracking crypto prices with charts
 
 ---
 
