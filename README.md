@@ -9,7 +9,6 @@ Crypto track is a modern web application that allows you to track actual crypto 
 * ** Tailwindcss ** - CSS framework for styling application
 * ** Vite ** - a tool that allows you to create application
 * ** Git & GitHub ** - version control system
-* 
 ---
 
 ## Features
