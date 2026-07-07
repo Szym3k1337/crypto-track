@@ -11,7 +11,7 @@ function ProceduralCoin({ textureUrl }: props) {
             {/* cylinderGeometry args = [promień góra, promień dół, grubość monety, liczba segmentów] */}
             <cylinderGeometry args={[2, 2, 0.3, 32]} />
             {/* Nakładamy teksturę na nasz wygenerowany cylinder */}
-            <meshStandardMaterial map={texture} roughness={0.3} metalness={0.8} emissive="#ffffff" emissiveIntensity={2} />
+            <meshStandardMaterial map={texture} roughness={0.3} metalness={0.8} />
         </mesh>
     );
 }

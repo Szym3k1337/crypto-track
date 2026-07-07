@@ -1,7 +1,8 @@
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
-import CryptoPrice from './components/CryptoPrice.jsx';
+import CryptoPrice from './Components/CryptoPrice.tsx';
 
-import CryptoDetail from "./Components/CryptoDetail.jsx";
+import CryptoDetail from "./Components/CryptoDetail.tsx";
+
 
 const router = createBrowserRouter([
   {
